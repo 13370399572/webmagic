@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: provider-music
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/musicdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+
+mybatis:
+  config-location: classpath:mybatis/config/mybatis-config.xml
+  mapUnderscoreToCamelCase: true
+  typeAliasesPackage: com.music.common
+  mapperLocations: classpath:mybatis/mappers/*.xml
+  
+mapper:
+  mappers: 
+    - com.music.util.BaseMapper
+    - tk.mybatis.mapper.common.Mapper
+  not-empty: false
+  identity: MYSQL
