@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;applicationeuraka.java&apos; to &apos;com-music-zhifubao/src/main/java/com.alipay&apos;&#x0D;&#x0A;- Original project: &apos;spring-euraka&apos;&#x0D;&#x0A;- Destination element: &apos;com-music-zhifubao/src/main/java/com.alipay&apos;&#x0D;&#x0A;- Original element: &apos;com.music.applicationeuraka.java&apos;" description="Copy compilation unit" destination="=com-music-zhifubao/src\/main\/java&lt;com.alipay" element1="/src\/main\/java&lt;com.music{applicationeuraka.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1573624069702" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,387 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon"
+	href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* css 代码  */
+</style>
+
+<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+<link  rel="stylesheet"  href="../css/bootstrap.min.css" type="text/css" />
+<script src="../jQuery/jQuery-2.2.0.js"></script>
+<script src="../jQuery/jQuery-2.2.0.min.js"></script>
+<script src="../jQuery/jquery-2.2.3.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+
+
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+<script
+	src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script
+	src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+<script
+	src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+</head>
+<body style="background-color:#cfe5ff;">
+	<div id="container" style="max-width: 800px; height: 400px"></div>
+	<div id="test" class="content">
+            <h3 id="hh">客官, 来两注?</h3>
+        </div>
+        <div class="button">
+            <input type="button" value="随机五注" onclick="fiveNumStr()"/>
+        </div>
+        <div> 
+         <div id="hhh" style="display: inline-block;"></div>
+         <div id="zz" style="display: inline-block;color: blue"></div>
+         
+        </div>
+        <input type="button" value="机选一住" onclick="wudi()"> 
+         <a id="www" type="button" style="font-size: 20px ;font-weight: bold;">点击付钱</a>
+	<form id="from1"  class="form-horizontal">
+		<div class="box-body">
+			<div class="row">
+				<div class="form-unit">添加大乐透期数</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="orderName" class="col-sm-3 control-label">期数</label>
+						<div class="col-sm-8">
+							<input  name="periods" id="line" type="text">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="orderName" class="col-sm-3 control-label">一区</label>
+						<div class="col-sm-8">
+							<input name="first" id="line" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="orderName" class="col-sm-3 control-label">二区</label>
+						<div class="col-sm-8">
+							<input name="secondArea" id="sign1" type="text">
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="warningType" class="col-sm-3 control-label">三区</label>
+						<div class="col-sm-8">
+							<input id="threeAreas" type='text' name="threeAreas" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="warningType" class="col-sm-3 control-label">四区</label>
+						<div class="col-sm-8">
+							<input id="fourAreas" type='text' name="fourAreas"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="warningType" class="col-sm-3 control-label">五区</label>
+						<div class="col-sm-8">
+							<input id="fiveArea" type='text' name="fiveArea"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="warningType" class="col-sm-3 control-label">六区</label>
+						<div class="col-sm-8">
+							<input id="sixArea" type='text' name="sixArea"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="warningType" class="col-sm-3 control-label">七区</label>
+						<div class="col-sm-8">
+							<input id="sevenArea" type='text' name="sevenArea" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- /.box-body -->
+
+		</div>
+		<div class="box-footer text-right">
+			<!--浠ヤ笅涓ょ鏂瑰紡鎻愪氦楠岃瘉,鏍规嵁鎵�闇�閫夋嫨-->
+			<!-- <button type="button" class="btn btn-danger" data-btn-type="cancel"></button>-->
+			<button  class="btn btn-info" id="tijiao"
+			>提交大乐透</button>
+		</div>
+		<!-- /.box-footer -->
+	</form>
+	<script>
+        $(function(){
+        	
+        	$("#www").click(function(){
+        		debugger;
+        		var url="/index/text"
+        		var ddd=$("#hhh").html() +$("#zz").html()
+        		var params= {text:ddd}
+        		$.getJSON(url,params,function(){
+        			
+        		})
+        		window.location.href ="http://localhost:8993/alipay.html"
+        	})
+        	$("#tijiao").click(function(){
+        	var data1=$("#from1").serializeJson();
+        	//debugger;
+        		alert(data1)
+        	$.ajax({
+        	    type:"POST",
+        	    url:"/index/super/add",
+        	    data:JSON.stringify(data1),
+        	    dataType: "json",
+        	    contentType:"application/json;charset=utf-8",
+        	    success: function(data){
+
+        	    	window.location.href = "http://localhost:8993/index/html";
+        	    	//debugger;
+        	        console.log(data);
+        	    }
+        	});
+        	})
+        	
+        	var a = new Array();
+    		var b = new Array();
+    		var c = new Array();
+    		var d = new Array();
+    		var e = new Array();
+    		var f = new Array();
+    		var g = new Array();
+    		var h = new Array();
+        	var url="selectAll"
+        	$.getJSON(url,function(data){
+        		//debugger;
+        		$.each(data,function(i,item){
+        			//debugger;
+        			a.push(item.first)
+        			b.push(item.secondArea)
+        			c.push(item.threeAreas)
+        			d.push(item.fourAreas)
+        			e.push(item.fiveArea)
+        			f.push(item.sixArea)
+        			g.push(item.sevenArea)
+        			h.push(item.periods)
+        		})
+        		doget(a,b,c,d,e,f,g,h);
+    		})
+    		
+        })
+        function doget(a,b,c,d,e,f,g,h){
+        	debugger;
+        	var chart = Highcharts.chart('container', {
+        		title: {
+        				text: '大乐透趋势图'
+        		},
+        		subtitle: {
+        				text: '数据来源：thesolarfoundation.com'
+        		},
+        		yAxis: {
+        				title: {
+        						text: '号码指数'
+        				}
+        		},
+        		legend: {
+        				layout: 'vertical',
+        				align: 'right',
+        				verticalAlign: 'middle'
+        		},
+        		xAxis: {
+        	        categories:h
+        	    },
+        		series: [{
+        				name: '一区',
+        				data:a
+        		}, {
+        				name: '二区',
+        				data:b
+        		}, {
+        				name: '三区',
+        				data:c
+        		}, {
+        				name: '四区',
+        				data:d
+        		}, {
+        				name: '五区',
+        				data:e
+        		},{
+    				name: '六区',
+    				data:f
+    		} ,{
+				name: '七区',
+				data:g
+		}],
+        		responsive: {
+        				rules: [{
+        						condition: {
+        								maxWidth: 500
+        						},
+        						chartOptions: {
+        								legend: {
+        										layout: 'horizontal',
+        										align: 'center',
+        										verticalAlign: 'bottom'
+        								}
+        						}
+        				}]
+        		}
+        }); 
+        }
+        //将from表单里的数据转json
+        $.fn.serializeJson=function(){  
+                var serializeObj={};  
+                var array=this.serializeArray();  
+                var str=this.serialize();  
+                $(array).each(function(){  
+                    if(serializeObj[this.name]){  
+                        if($.isArray(serializeObj[this.name])){  
+                            serializeObj[this.name].push(this.value);  
+                        }else{  
+                            serializeObj[this.name]=[serializeObj[this.name],this.value];  
+                        }  
+                    }else{  
+                        serializeObj[this.name]=this.value;   
+                    }  
+                });  
+                return serializeObj;  
+            }; 
+            var fiveIsClick = true
+            function fiveNumStr() {
+                if (fiveIsClick) {
+                	// 设为false, 不可再次点击
+                    fiveIsClick = false
+                    var content = document.getElementsByClassName('content')[0]
+                    var innerText = content.getElementsByClassName('context')
+                    var ulNode = content.getElementsByTagName('ul')[0]
+                    // 先删除已创建的ul及其字节点, 再新增
+                    // 为什么要删除再添加节点呢, 是因为不增删节点只改变数字虽然渲染更快, 但是区别太小, 失去了动态效果
+                    // 当然, 如果你不需要删除再添加节点也行, 以下代码稍改动一下就好了
+                    if (ulNode) {
+                        content.removeChild(ulNode)
+                    }
+                    var ul = document.createElement('ul')
+                    // 用ul节点长度判断是否存在ul
+                    var ulLength = content.getElementsByTagName('ul').length
+                    var index = 0 
+                    // 计时器，每隔0.5秒新增一组
+                    var interval = setInterval(function() {
+                        index ++
+                        if (ulLength < 1) {
+                            var li = document.createElement('li')
+                            li.setAttribute('class','context')
+                            ul.appendChild(li)
+                            content.appendChild(ul)
+                            // 遍历li节点
+                            var context = document.getElementsByClassName('context')[index - 1]
+                            // 得到顺序被打乱的前区35个数字数组
+                            var randomLeft = randomNumber(35)
+                            // 大乐透前区数组
+                            var leftNum = [randomLeft[0], randomLeft[1], randomLeft[2], randomLeft[3], randomLeft[4]]
+                            // 从小到大排序
+                            leftNum.sort(function (a, b) {
+                                return a - b
+                            })
+                            // 得到顺序被打乱的后区12个数字数组
+                            var randomRight = randomNumber(12)
+                            // 大乐透后区数组
+                            var rightNum = [randomRight[0], randomRight[1]]
+                            rightNum.sort(function (a, b) {
+                                return a - b // 从小到大排序
+                            })
+                            // 节点模版，用于给每个球添加样式
+                            var spanNode = "<span 'lineheight=1110px' style=' background:#ddd;color:red;border-radius:60%;border:2px solid '>" + leftNum[0] + "</span> " + "<span 'lineheight=1110px' style='color:red;border-radius:60%;border:2px solid ;'>" + leftNum[1] + "</span> " + "<span 'lineheight=1110px' style='color:red;border-radius:60%;border:2px solid '>" + leftNum[2] + "</span> "
+                                + "<span 'lineheight=1110px' style='color:red;border-radius:60%;border:2px solid '>" + leftNum[3] + "</span> " + "<span  'lineheight=1110px' style='color:red;border-radius:60%;border:2px solid '>" + leftNum[4] + "</span>          " + "<span 'lineheight=1110px' style='color:blue ;border-radius:60%;border:2px solid'>" + rightNum[0] + "</span> " + "<span style='color:blue ;border-radius:60%;border:2px solid'>" + rightNum[1] + "</span>"
+                            // 节点已添加，再添加spanNode节点模版
+                            context.innerHTML = spanNode
+                            // li节点数量达到5个，就停止计时器
+                            if (index >= 5) {
+                                clearInterval(interval)
+                            }
+                        }
+                        $("#hh").css({'color':'blue'})
+                       $("#test").css({'font-weight':'800','font-size':'20px'})
+                      // 'border-radius':'50%' ,'border':'2px solid'
+                    	   $("#test").find("span").each(function(i){
+                    		// alert(i);
+                    		
+                    		/*  $("#test").find("span")[i].css({}) */
+                    		//attrUser[i] = $(this).attr('userid');
+                    		})
+                       
+                     // $('#test').attr({'font-weight':'1000px'});
+                    }, 500)
+                    // 阻止按钮重复点击，间隔3秒
+                    setTimeout(function() {  
+                        fiveIsClick = true
+                    }, 3000)
+                }
+            }
+            
+            // 定义 randomNumber方法, 随机输出数组
+            function randomNumber(num) {
+                // 定义 strArr方法, 生成数组
+                function strArr(num) {
+                    var numberAarry = []
+                    for (var i = 0; i < num; i++) {
+                        numberAarry[i] = i + 1
+                    }
+                    return numberAarry
+                }
+                // 获得数组
+                var numberAarry = strArr(num)
+                // 将数组元素随机排序
+                numberAarry.sort(function () {
+                    return 0.5 - Math.random()
+                })
+                // 小于10，前面加0
+                for (var i = 0; i < numberAarry.length; i++) {
+                    if (numberAarry[i] < 10) {
+                        numberAarry[i] = '0' + numberAarry[i]
+                    } else {
+                        numberAarry[i] = String(numberAarry[i])
+                    }
+                }
+                return numberAarry
+            }
+            
+            function wudi(){
+            	 var randomLeft =	randomNumber(35);
+            	 var leftNum = [randomLeft[0], randomLeft[1], randomLeft[2], randomLeft[3], randomLeft[4]];
+            	 leftNum.sort(function (a, b) {
+                     return a - b // 从小到大排序
+                 })
+                  var randomLeft =	randomNumber(12);
+            	 var zz = [randomLeft[0], randomLeft[1]];
+            	 zz.sort(function (a, b) {
+                     return a - b // 从小到大排序
+                 })
+                 $("#hhh").html(leftNum[0]+" "+leftNum[1]+" "+leftNum[2]+" "+leftNum[3]+" "+leftNum[4]+" ")
+                 $("#zz").html(zz[0]+" "+zz[1])
+                 $("#hhh").css({"color":"red","font-weight":"bold","font-size":"40px"})
+                  $("#zz").css({"color":"blue","font-weight":"bold","font-size":"40px"})
+            }
+            
+            
+            
+        </script>
+</body>
+</html>
